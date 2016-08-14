@@ -25,7 +25,7 @@ class Api
     /**
      * @var string $api_key contain API key
      */
-    private $api_key = '90c8ac8dc37852924afe03a9c700291129590b0f';
+    private $api_key = 'api_key_is_here';
 
     /**
      * @var SoapClient $api Contain SoapClient

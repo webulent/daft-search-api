@@ -67,8 +67,8 @@ class Area implements QueryInterface
         $area_list = json_decode(json_encode($areas->getAreaList()), true);
 
         $items = array();
-        foreach ($text_array AS $item) {
-            if (isset($area_list['areas'])) {
+        if (isset($area_list['areas'])) {
+            foreach ($text_array AS $item) {
                 array_push($items, $this->findArrayByKey($area_list['areas'], 'name', ucfirst($item)));
             }
         }
