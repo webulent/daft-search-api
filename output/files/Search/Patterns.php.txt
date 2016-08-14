@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * Created by IntelliJ IDEA.
+ * User: bulent
+ * @author Bulent Kocaman
+ * @author Bulent Kocaman <hi@bulentkocaman.com>
+ */
+
+namespace Daft\Search;
+
+/**
+ * Class Patterns
+ * @package Daft\Search
+ */
+class Patterns
+{
+    /**
+     * The patterns provided.
+     * @var array $pattern
+     */
+    private $pattern = [
+        'bedrooms' => '/(?P<bedrooms>(((?P<min_bedrooms>\d{1,2})\sor\s(?P<max_bedrooms>\d{1,2}))|\d{1,2})).(?:bed|beds|bedroom|bedrooms|room|rooms)/i',
+
+        /**
+         * Not sure with English about how to search max_price and min_price
+         * @todo patterns of min-max prices (1000 - 2000 / 1000 or 2000 / 1000 to 2000)?
+         */
+        'price' => '/(?P<price>(((?P<min_price>(?<![0-9.,])(?:[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]*)?|[0-9]{1,3}(?:\.?[0-9]{3})*(?:,[0-9]*)?)(?![0-9.,]))(-| - | or | to )(?P<max_price>(?<![0-9.,])(?:[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]*)?|[0-9]{1,3}(?:\.?[0-9]{3})*(?:,[0-9]*)?)(?![0-9.,])))|(?<![0-9.,])(?:[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]*)?|[0-9]{1,3}(?:\.?[0-9]{3})*(?:,[0-9]*)?)(?![0-9.,]))).(?:per month|monthly|per weeks|per months)/i',
+
+        'ad_types' => [
+            'rental' => ['to let', 'rent', 'rental', 'renting'],
+            'sale' => ['sale', 'selling', 'sell']
+        ],
+
+        /**
+         * @todo property_types should come from AdType...
+         */
+        'property_types' => ['house', 'apartment', 'studio']
+    ];
+
+    /**
+     * Get pattern by array key.
+     * @param $pattern_key
+     * @return array
+     */
+    public function getPattern($pattern_key)
+    {
+        return $this->pattern[$pattern_key];
+    }
+}
