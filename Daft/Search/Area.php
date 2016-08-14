@@ -69,7 +69,7 @@ class Area implements QueryInterface
         $items = array();
         foreach ($text_array AS $item) {
             if (isset($area_list['areas'])) {
-                array_push($items, $this->findArrayByKey($area_list['areas'], 'name', $item));
+                array_push($items, $this->findArrayByKey($area_list['areas'], 'name', ucfirst($item)));
             }
         }
 
